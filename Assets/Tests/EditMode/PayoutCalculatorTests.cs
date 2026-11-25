@@ -14,7 +14,7 @@ namespace SlotGame.Tests
         }
 
         [TestCase(SymbolType.Cherry, 4)]
-        [TestCase(SymbolType.Bell, 10)]
+        [TestCase(SymbolType.Bell, 5)]
         [TestCase(SymbolType.Bar, 25)]
         [TestCase(SymbolType.Seven, 50)]
         public void ThreeOfAKind_PaysBetTimesMultiplier(SymbolType symbol, int multiplier)

@@ -26,10 +26,32 @@ namespace SlotGame.Core
         public Dictionary<SymbolType, int> Payouts = new Dictionary<SymbolType, int>
         {
             { SymbolType.Cherry, 4 },
-            { SymbolType.Bell, 10 },
+            // Bell pays low on purpose, it also triggers free spins which is where its real value is
+            { SymbolType.Bell, 5 },
             { SymbolType.Bar, 25 },
             { SymbolType.Seven, 50 }
         };
+
+        // ---- Bonus: progressive jackpot (triple Seven) ----
+        public SymbolType JackpotSymbol = SymbolType.Seven;
+        public int JackpotSeed = 1000;
+        public float JackpotContributionRate = 0.05f;
+
+        // ---- Bonus: free spins (triple Bell) ----
+        public SymbolType FreeSpinsSymbol = SymbolType.Bell;
+        public int FreeSpinsAwarded = 5;
+        public int FreeSpinWinMultiplier = 2;
+
+        public int MaxBet
+        {
+            get
+            {
+                int max = 0;
+                foreach (int bet in BetOptions)
+                    if (bet > max) max = bet;
+                return max;
+            }
+        }
 
         public static SlotRules CreateDefault() => new SlotRules();
     }

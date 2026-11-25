@@ -1,0 +1,13 @@
+# Unity YAML: let git treat scenes/prefabs as text but merge them with Unity's smart merge
+*.unity    merge=unityyamlmerge eol=lf
+*.prefab   merge=unityyamlmerge eol=lf
+*.asset    merge=unityyamlmerge eol=lf
+*.anim     merge=unityyamlmerge eol=lf
+*.controller merge=unityyamlmerge eol=lf
+*.mat      merge=unityyamlmerge eol=lf
+*.meta     eol=lf
+
+*.cs   text diff=csharp
+*.png  binary
+*.mp3  binary
+*.gif  binary

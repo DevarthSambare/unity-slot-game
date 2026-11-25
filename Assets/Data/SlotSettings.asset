@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2392d79ce9d76b8409039faf4d954269, type: 3}
+  m_Name: SlotSettings
+  m_EditorClassIdentifier: SlotGame::SlotGame.Game.SlotSettings
+  startingCredits: 1000
+  betOptions: 0a0000003200000064000000
+  symbols:
+  - symbol: 0
+    reelWeight: 12
+    payoutMultiplier: 4
+  - symbol: 1
+    reelWeight: 9
+    payoutMultiplier: 5
+  - symbol: 2
+    reelWeight: 7
+    payoutMultiplier: 25
+  - symbol: 3
+    reelWeight: 4
+    payoutMultiplier: 50
+  jackpotSymbol: 3
+  jackpotSeed: 1000
+  jackpotContribution: 0.05
+  freeSpinsSymbol: 1
+  freeSpinsAwarded: 5
+  freeSpinMultiplier: 2

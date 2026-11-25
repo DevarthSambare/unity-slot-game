@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d50325e7d17aa854eb8e8b2253020406, type: 3}
+  m_Name: SoundLibrary
+  m_EditorClassIdentifier: SlotGame::SlotGame.Audio.SoundLibrary
+  uiClick: {fileID: 8300000, guid: 998f9b9042695fc4ca86cbda35033aed, type: 3}
+  leverPull: {fileID: 8300000, guid: 54f689d727e15a447a1ce5066cd86c9a, type: 3}
+  reelSpinLoop: {fileID: 8300000, guid: f6f7bc50bc89b394ca36e20bd3c8052e, type: 3}
+  reelStop: {fileID: 8300000, guid: 4fe78ca0ba48dbf41bcac72aa4a0a38e, type: 3}
+  anticipation: {fileID: 8300000, guid: e7ef9242a020acb439df10b3106382b1, type: 3}
+  winSmall: {fileID: 8300000, guid: fc8933878f7393944875f3af6eccf187, type: 3}
+  winJackpot: {fileID: 8300000, guid: 9a776d71bb1128f49bc622c52fdacaf8, type: 3}
+  freeSpins: {fileID: 8300000, guid: b6017e9e0a508134cacae1f6c28a04c2, type: 3}
+  noWin: {fileID: 8300000, guid: b8ea00bbc94f85045a456b663a71e69d, type: 3}
+  coinTick: {fileID: 8300000, guid: 9535e66f38e4f4d4785131cd65f20d1d, type: 3}
+  ambience: {fileID: 8300000, guid: b28ffe672f0cbd946a543c3b76949e44, type: 3}

@@ -76,14 +76,17 @@ namespace SlotGame.UI
         }
 
         /// <summary>Controls which buttons can be pressed in the current game state.</summary>
-        public void SetState(bool spinning, bool canChangeBet, bool inFreeSpins)
+        /// <param name="reelsSpinning">Reels are moving, the spin button becomes STOP (slam stop).</param>
+        /// <param name="canChangeBet">Idle and not in free spins.</param>
+        public void SetState(bool reelsSpinning, bool canChangeBet, bool inFreeSpins)
         {
-            _spinReady = !spinning;
-            betDownButton.interactable = canChangeBet && !spinning;
-            betUpButton.interactable = canChangeBet && !spinning;
+            _spinReady = !reelsSpinning;
+            betDownButton.interactable = canChangeBet;
+            betUpButton.interactable = canChangeBet;
 
-            // spin button stays clickable while spinning, a second press = slam stop
-            spinButtonLabel.text = spinning ? "STOP" : inFreeSpins ? "FREE SPIN" : "SPIN";
+            // spin button stays clickable the whole time: STOP while spinning, and during a win
+            // celebration a press skips it and spins again
+            spinButtonLabel.text = reelsSpinning ? "STOP" : inFreeSpins ? "FREE SPIN" : "SPIN";
         }
 
         public void SetFreeSpins(int remaining, int multiplier, bool instant = false)

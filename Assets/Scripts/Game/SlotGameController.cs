@@ -297,7 +297,9 @@ namespace SlotGame.Game
 
         private void RefreshHudState()
         {
-            hud.SetState(_state != GameState.Idle, _machine.CanChangeBet, _machine.IsInFreeSpins);
+            hud.SetState(_state == GameState.Spinning,
+                _state == GameState.Idle && _machine.CanChangeBet,
+                _machine.IsInFreeSpins);
         }
 
         private void PlayCoinTick()

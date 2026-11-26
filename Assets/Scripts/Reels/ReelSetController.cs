@@ -35,6 +35,9 @@ namespace SlotGame.Reels
         /// <summary>Fires with the reel index each time a reel lands.</summary>
         public event Action<int> ReelStopped;
 
+        /// <summary>Fires with the reel index whenever a symbol scrolls past the payline.</summary>
+        public event Action<int> SymbolPassed;
+
         /// <summary>Fires when the last reel starts its "will it, won't it" extra spin.</summary>
         public event Action AnticipationStarted;
 
@@ -44,6 +47,7 @@ namespace SlotGame.Reels
             {
                 int index = i; // capture for the lambda
                 reels[i].Stopped += _ => ReelStopped?.Invoke(index);
+                reels[i].SymbolPassed += _ => SymbolPassed?.Invoke(index);
             }
             SetGlows(0f, -1);
         }

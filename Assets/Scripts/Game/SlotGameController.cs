@@ -47,6 +47,8 @@ namespace SlotGame.Game
         private GameState _state = GameState.Idle;
         private bool _skipRequested;
         private float _lastCoinTickTime;
+        private float _lastReelTickTime;
+        private SpinResult _currentResult;
 
         private static readonly Color MessageNeutral = new Color(0.85f, 0.88f, 1f);
         private static readonly Color MessageWin = new Color(1f, 0.85f, 0.3f);
@@ -84,6 +86,8 @@ namespace SlotGame.Game
             popup.ButtonPressed += audioManager.PlayClick;
 
             reels.ReelStopped += winPresenter.OnReelStopped;
+            reels.ReelStopped += OnReelStopped;
+            reels.SymbolPassed += OnSymbolPassed;
             reels.AnticipationStarted += OnAnticipation;
 
             // coin tick while the credits roll up, throttled by CountUpText only firing on change
@@ -202,6 +206,7 @@ namespace SlotGame.Game
 
         private IEnumerator SpinSequence(SpinResult result)
         {
+            _currentResult = result;
             _state = GameState.Spinning;
             _skipRequested = false;
             RefreshHudState();
@@ -262,6 +267,37 @@ namespace SlotGame.Game
             {
                 HandleCannotAfford();
             }
+        }
+
+        /// <summary>
+        /// Mechanical tick as symbols pass. Three reels at full speed would be ~50 ticks a second,
+        /// so it's throttled into a steady ratchet that slows down naturally as the reels brake.
+        /// </summary>
+        private void OnSymbolPassed(int reelIndex)
+        {
+            if (Time.unscaledTime - _lastReelTickTime < 0.075f)
+                return;
+            _lastReelTickTime = Time.unscaledTime;
+            audioManager.Play(audioManager.Sounds.reelTick, 0.35f, 1f, 0.08f);
+        }
+
+        /// <summary>
+        /// When a reel lands on the same symbol as every reel before it, ding, and the pitch steps
+        /// up with each matching reel so the player hears the win building before it's confirmed.
+        /// </summary>
+        private void OnReelStopped(int reelIndex)
+        {
+            if (_currentResult == null || reelIndex == 0)
+                return;
+
+            for (int i = 1; i <= reelIndex; i++)
+            {
+                if (_currentResult.Symbols[i] != _currentResult.Symbols[0])
+                    return;
+            }
+
+            float pitch = 1f + 0.18f * (reelIndex - 1);
+            audioManager.Play(audioManager.Sounds.reelMatch, 0.7f, pitch);
         }
 
         private void OnAnticipation()

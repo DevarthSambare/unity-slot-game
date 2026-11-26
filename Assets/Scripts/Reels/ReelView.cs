@@ -58,6 +58,11 @@ namespace SlotGame.Reels
 
         public event Action<ReelView> Stopped;
 
+        /// <summary>Fires every time a new symbol scrolls onto the payline while spinning (for tick sounds).</summary>
+        public event Action<ReelView> SymbolPassed;
+
+        private int _lastPassedIndex;
+
         private void Awake()
         {
             // cosmetic only, this has nothing to do with the outcome
@@ -196,6 +201,15 @@ namespace SlotGame.Reels
             {
                 foreach (var view in symbolViews)
                     view.SetMotionStretch(1f, 1f);
+            }
+
+            // a new strip index reached the payline -> one "notch" of the reel went past
+            int paylineIndex = Mathf.RoundToInt(_position);
+            if (paylineIndex != _lastPassedIndex)
+            {
+                _lastPassedIndex = paylineIndex;
+                if (IsSpinning)
+                    SymbolPassed?.Invoke(this);
             }
         }
 

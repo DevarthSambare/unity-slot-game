@@ -93,7 +93,7 @@ namespace SlotGame.Game
             }
             else
             {
-                audioManager.Play(audioManager.Sounds.winSmall, isBig ? 1f : 0.8f);
+                audioManager.Play(isBig ? audioManager.Sounds.winBig : audioManager.Sounds.winSmall, isBig ? 1f : 0.85f);
                 if (isBig)
                     screenFlash.Flash(bigWinColor, 0.35f, 0.15f);
             }

@@ -8,7 +8,9 @@ namespace SlotGame.Audio
     /// Plays every sound in the game.
     /// - small pool of 2D AudioSources for one shots, so overlapping sounds don't cut each other off
     ///   and each one can get its own pitch variation
-    /// - dedicated looping sources for the reel spin and the ambience bed
+    /// - a dedicated looping source for the reel spin
+    /// - no background ambience on purpose, the crowd noise got tiring fast. The reels and wins
+    ///   carry the soundscape instead (ticks, stop thunks, match chimes)
     /// - one master mute (M key / speaker button), remembered in PlayerPrefs
     ///
     /// No AudioMixer on purpose: for a handful of 2D sounds a simple gain layer is enough and it
@@ -23,13 +25,11 @@ namespace SlotGame.Audio
 
         [Header("Mix")]
         [Range(0f, 1f)] [SerializeField] private float sfxVolume = 0.9f;
-        [Range(0f, 1f)] [SerializeField] private float ambienceVolume = 0.25f;
-        [Range(0f, 1f)] [SerializeField] private float reelLoopVolume = 0.55f;
+        [Range(0f, 1f)] [SerializeField] private float reelLoopVolume = 0.4f;
 
         private AudioSource[] _voices;
         private int _nextVoice;
         private AudioSource _reelLoop;
-        private AudioSource _ambience;
         private Coroutine _reelFade;
 
         public SoundLibrary Sounds => sounds;
@@ -42,20 +42,9 @@ namespace SlotGame.Audio
                 _voices[i] = CreateSource($"Voice {i}", loop: false);
 
             _reelLoop = CreateSource("Reel Loop", loop: true);
-            _ambience = CreateSource("Ambience", loop: true);
 
             IsMuted = PlayerPrefs.GetInt(MutedPrefKey, 0) == 1;
             AudioListener.volume = IsMuted ? 0f : 1f;
-        }
-
-        private void Start()
-        {
-            if (sounds != null && sounds.ambience != null)
-            {
-                _ambience.clip = sounds.ambience;
-                _ambience.volume = ambienceVolume;
-                _ambience.Play();
-            }
         }
 
         private AudioSource CreateSource(string sourceName, bool loop)

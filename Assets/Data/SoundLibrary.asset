@@ -16,10 +16,12 @@ MonoBehaviour:
   leverPull: {fileID: 8300000, guid: 54f689d727e15a447a1ce5066cd86c9a, type: 3}
   reelSpinLoop: {fileID: 8300000, guid: f6f7bc50bc89b394ca36e20bd3c8052e, type: 3}
   reelStop: {fileID: 8300000, guid: 4fe78ca0ba48dbf41bcac72aa4a0a38e, type: 3}
+  reelTick: {fileID: 8300000, guid: 69092206492a4f04e89bfb4c2bd38dc7, type: 3}
+  reelMatch: {fileID: 8300000, guid: 6dd105b50f57c4b4ca16d3ff60134b68, type: 3}
   anticipation: {fileID: 8300000, guid: e7ef9242a020acb439df10b3106382b1, type: 3}
   winSmall: {fileID: 8300000, guid: fc8933878f7393944875f3af6eccf187, type: 3}
+  winBig: {fileID: 8300000, guid: 76f4d350262861346945614a17bc128b, type: 3}
   winJackpot: {fileID: 8300000, guid: 9a776d71bb1128f49bc622c52fdacaf8, type: 3}
   freeSpins: {fileID: 8300000, guid: b6017e9e0a508134cacae1f6c28a04c2, type: 3}
   noWin: {fileID: 8300000, guid: b8ea00bbc94f85045a456b663a71e69d, type: 3}
   coinTick: {fileID: 8300000, guid: 9535e66f38e4f4d4785131cd65f20d1d, type: 3}
-  ambience: {fileID: 8300000, guid: b28ffe672f0cbd946a543c3b76949e44, type: 3}

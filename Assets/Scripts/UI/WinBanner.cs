@@ -44,7 +44,12 @@ namespace SlotGame.UI
             _skip = false;
 
             titleText.text = title;
-            titleText.color = titleColor;
+
+            // light top -> full colour bottom, reads like the classic shiny arcade lettering
+            Color top = Color.Lerp(titleColor, Color.white, 0.65f);
+            titleText.color = Color.white;
+            titleText.enableVertexGradient = true;
+            titleText.colorGradient = new VertexGradient(top, top, titleColor, titleColor);
             subtitleText.text = subtitle;
             amountText.gameObject.SetActive(amount > 0);
             amountText.SetImmediate(0);

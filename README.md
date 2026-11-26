@@ -67,7 +67,8 @@ send `Content-Encoding` headers (python http.server, GitHub Pages, itch.io).
 
 1. Unity **6000.4.10f1** (Unity 6.4). Other Unity 6 versions should be fine too.
 2. Open the repo folder in Unity Hub, open `Assets/Scenes/Main.unity` and press Play.
-3. To make a WebGL build yourself: File > Build Profiles > Web > Build, output to `Build/WebGL`.
+3. To make a WebGL build yourself: Tools > Slot Game > Build WebGL (writes to `Build/WebGL`), or from the command line:
+   `Unity -batchmode -quit -projectPath . -buildTarget WebGL -executeMethod SlotGame.EditorTools.WebGLBuilder.Build`
 
 ---
 

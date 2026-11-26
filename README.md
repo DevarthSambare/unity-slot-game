@@ -4,10 +4,6 @@ A classic 3 reel slot machine built in Unity 6 for the Underpin Technology Unity
 It uses the art pack provided with the assignment (cabinet, symbols, buttons, popup) and adds the game logic,
 reel animation, sound, UI and a couple of bonus features on top.
 
-### ▶ Play it in the browser: https://devarthsambare.github.io/unity-slot-game/
-
-(Desktop browser recommended. Click once inside the game to enable sound.)
-
 ![Idle](Docs/screenshots/idle.png)
 
 | Anticipation on the last reel | Jackpot |
@@ -47,10 +43,7 @@ reel animation, sound, UI and a couple of bonus features on top.
 
 ## Running the WebGL build
 
-**Easiest:** play the hosted copy at https://devarthsambare.github.io/unity-slot-game/ (deployed from
-`Build/WebGL` by the GitHub Actions workflow in `.github/workflows/pages.yml`).
-
-To run it locally instead, the build is in [`Build/WebGL`](Build/WebGL). Unity WebGL builds need to be served over HTTP, opening
+The build is in [`Build/WebGL`](Build/WebGL). Unity WebGL builds need to be served over HTTP, opening
 `index.html` straight from disk won't work because the browser blocks loading the `.wasm` / data files.
 
 Any static server works. From the repo root:
@@ -66,6 +59,10 @@ python -m http.server 8000
 # or Node
 npx serve Build/WebGL
 ```
+
+Click once inside the game to enable sound (browsers block audio until you interact with the page).
+
+There's also a GitHub Pages workflow in `.github/workflows/pages.yml` that publishes `Build/WebGL` on push.
 
 The build uses gzip compression with **decompression fallback** turned on, so it runs on servers that don't
 send `Content-Encoding` headers (python http.server, GitHub Pages, itch.io).

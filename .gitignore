@@ -40,3 +40,6 @@ crashlytics-build.properties
 .DS_Store
 Thumbs.db
 __MACOSX/
+
+# Rider / VS Code solution files
+*.slnx

@@ -1,4 +1,4 @@
-# Lucky Sevens: Unity Slot Machine
+# Unity Slot Game Assignment
 
 A classic 3 reel slot machine built in Unity 6 for the Underpin Technology Unity Developer Intern assignment.
 It uses the art pack provided with the assignment (cabinet, symbols, buttons, popup) and adds the game logic,

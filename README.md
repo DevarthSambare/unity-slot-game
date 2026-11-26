@@ -4,6 +4,10 @@ A classic 3 reel slot machine built in Unity 6 for the Underpin Technology Unity
 It uses the art pack provided with the assignment (cabinet, symbols, buttons, popup) and adds the game logic,
 reel animation, sound, UI and a couple of bonus features on top.
 
+### ▶ Play it in the browser: https://devarthsambare.github.io/unity-slot-game/
+
+(Desktop browser recommended. Click once inside the game to enable sound.)
+
 ![Idle](Docs/screenshots/idle.png)
 
 | Anticipation on the last reel | Jackpot |
@@ -43,7 +47,10 @@ reel animation, sound, UI and a couple of bonus features on top.
 
 ## Running the WebGL build
 
-The build is in [`Build/WebGL`](Build/WebGL). Unity WebGL builds need to be served over HTTP, opening
+**Easiest:** play the hosted copy at https://devarthsambare.github.io/unity-slot-game/ (deployed from
+`Build/WebGL` by the GitHub Actions workflow in `.github/workflows/pages.yml`).
+
+To run it locally instead, the build is in [`Build/WebGL`](Build/WebGL). Unity WebGL builds need to be served over HTTP, opening
 `index.html` straight from disk won't work because the browser blocks loading the `.wasm` / data files.
 
 Any static server works. From the repo root:
@@ -104,8 +111,13 @@ send `Content-Encoding` headers (python http.server, GitHub Pages, itch.io).
   banner, flash and a coin burst; the jackpot adds a bigger shake and flash.
 
 ### Sound
+The reels carry the soundscape: a soft mechanical tick as each symbol passes, a thunk when a reel lands,
+and a chime when a reel matches the ones before it (pitch steps up with each matching reel, so you hear a
+win building before it's confirmed). Small wins, big wins and the jackpot each have their own jingle.
+I left out background ambience on purpose, the crowd noise got tiring after a few minutes.
+
 No audio came with the asset pack, so I generated the sound effects with the ElevenLabs sound effects API
-(lever, reel loop, reel stop, anticipation riser, win jingles, jackpot fanfare, coin tick, ambience).
+(lever, reel loop, reel stop, anticipation riser, reel ticks, match chimes, win jingles, jackpot fanfare, coin tick).
 They're in `Assets/Sounds`.
 
 ---
